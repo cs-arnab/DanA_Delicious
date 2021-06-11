@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import pizzas from "../pizzasdata";
 import Pizza from "../components/Pizza";
 import { getAllPizzas } from "../actions/pizzaActions";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 // import { getAllPizzasReducer } from "../reducers/pizzaReducers";
 
 export default function Homescreen() {
@@ -18,14 +20,14 @@ export default function Homescreen() {
     <div>
       <div className="row justify-content-center">
         {loading ? (
-          <h1>Loading . . . </h1>
+         <Loading/>
         ) : error ? (
-          <h1>something went wrong arnab</h1>
+          <Error error='something went wrong . . .'/>
         ) : (
           pizzas.map((pizza) => {
             return (
               <div className="col-md-3 m-3" key={pizza._id}>
-                <div >
+                <div>
                   <Pizza pizza={pizza} />
                 </div>
               </div>

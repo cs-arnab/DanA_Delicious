@@ -31,7 +31,7 @@ export default function Ordersscreen() {
                       return (
                         <div>
                           <p>
-                            {item.name} [{item.varient}]*{item.quantity}=
+                            {item.name} [{item.varient}] * {item.quantity} = 
                             {item.price}
                           </p>
                         </div>
@@ -49,7 +49,7 @@ export default function Ordersscreen() {
                   {/* Order Status */}
                   <div className="text-left w-100 m-1">
                     <h2 style={{ fontSize: "25px" }}>Status</h2><hr/>
-                    <p>Order Amount :{order.orderAmount}</p>
+                    <p>Order Amount : {order.orderAmount}</p>
                     <p>Order Id : {order._id}</p>
                     <p>Transaction Id : {order.transactionId}</p>
                     <p>Date : {order.createdAt.substring(0,10)}</p>

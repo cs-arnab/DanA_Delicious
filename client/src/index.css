@@ -59,6 +59,7 @@ select{
 .pay-button:hover{
   color: rgb(255, 255, 255);
   background-color: rgb(110, 110, 110);
+  /* color:rgb(120, 119, 99) */
 }
 input{
   margin-top: 10px !important;

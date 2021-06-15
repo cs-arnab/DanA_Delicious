@@ -8,8 +8,12 @@ export default function Navbar() {
   const dispatch = useDispatch();
   return (
     <div>
-      <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-white rounded">
-        <a className="navbar-brand" href="/">
+      <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-dark rounded">
+        <a className="navbar-brand" href="/" style={{ color: "white" }}>
+          <img
+            src="https://img.icons8.com/office/50/000000/pizza.png"
+            height="25px"
+          />{" "}
           DanA PIZZA
         </a>
         <button
@@ -22,7 +26,7 @@ export default function Navbar() {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon">
-            <i style={{ color: "black" }} className="fas fa-bars"></i>
+            <i style={{ color: "white" }} className="fas fa-bars"></i>
           </span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
@@ -30,14 +34,15 @@ export default function Navbar() {
             {currentUser ? (
               <div className="dropdown mt-2">
                 <a
-                  className="dropdown-toggle"
+                  className="dropdown-toggle "
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  style={{ color: "white" }}
                 >
-                  {currentUser.name}
+                  {currentUser.name}{" "}
                 </a>
                 <div
                   className="dropdown-menu"
@@ -59,14 +64,16 @@ export default function Navbar() {
               </div>
             ) : (
               <li className="nav-item">
-                <a className="nav-link" href="/login">
+                <a className="nav-link fas fa-user" href="/login">
+                  {" "}
                   Login
                 </a>
               </li>
             )}
 
             <li className="nav-item">
-              <a className="nav-link" href="/cart">
+              <a className="nav-link ml-2 fas fa-shopping-cart" href="/cart">
+                {" "}
                 Cart {cartstate.cartItems.length}
               </a>
             </li>

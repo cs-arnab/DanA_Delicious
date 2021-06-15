@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import {useDispatch,useSelector} from 'react-redux'
-import {addToCart} from "../actions/cartActions"
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../actions/cartActions";
+import AOS from "aos";
+import 'aos/dist/aos.css';
 
 export default function Pizza({ pizza }) {
+
+  AOS.init({
+    duration:1200
+  })
+
   const [quantity, setquantity] = useState(1);
   const [varient, setvarient] = useState("small");
   const [show, setShow] = useState(false);
@@ -11,15 +18,14 @@ export default function Pizza({ pizza }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const dispatch = useDispatch();
 
-  const dispatch=useDispatch()
-
-  function addtocart(){
-          console.log("add in cart pizza:",pizza.name)
-          dispatch(addToCart(pizza,quantity,varient))
+  function addtocart() {
+    console.log("add in cart pizza:", pizza.name);
+    dispatch(addToCart(pizza, quantity, varient));
   }
   return (
-    <div className="shadow-lg p-3 mb-3 bg-white rounded">
+    <div data-aos='zoom-in' className="shadow-lg p-3 mb-3 bg-white rounded" key={pizza._id}>
       <div onClick={handleShow}>
         <h1>{pizza.name}</h1>
         <img
@@ -68,14 +74,16 @@ export default function Pizza({ pizza }) {
           </h1>
         </div>
         <div className="m-1 w-100">
-          <button className="btn" onClick={addtocart}>ADD TO CART</button>
+          <button className="btn" onClick={addtocart}>
+            ADD TO CART
+          </button>
         </div>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{pizza.name}</Modal.Title>
         </Modal.Header>
- {/* show image and description */}
+        {/* show image and description */}
         <Modal.Body>
           <img
             src={pizza.image}

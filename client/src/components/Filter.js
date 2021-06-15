@@ -38,11 +38,10 @@ export default function Filter() {
           {/* <button className="btn w-100 mt-2">FILTER</button> */}
           {/* <button className="filter-button w-100 mt-2">FILTER</button> */}
           <button
-            className="mt-2 bg-warning text-dark w-100"
+            className="filter-button mt-2 w-100 "
             onClick={() => {
               dispatch(filterPizzas(searchkey, category));
             }}
-            style={{ borderRadius: "5px", padding: "2px", fontSize: "20px" }}
           >
             FILTER
           </button>
@@ -51,3 +50,15 @@ export default function Filter() {
     </div>
   );
 }
+
+
+//inline style in filter button
+// text-white
+// bg-warning
+// style={{
+//   borderRadius: "5px",
+//   padding: "3px",
+//   fontSize: "20px",
+//   border: "none",
+//   color:"white",
+// }}

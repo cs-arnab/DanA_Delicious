@@ -15,7 +15,7 @@ export default function Checkout({ subtotal }) {
     dispatch(placeOrder(token, subtotal));
   }
   return (
-    <div>
+    <div className="cbody">
       {loading && <Loading />}
       {success && <Success success="Your Order Placed Successfully" />}
       {error && <Error error="Order Failed" />}

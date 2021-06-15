@@ -2,21 +2,27 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, deleteFromCart } from "../actions/cartActions";
 import Checkout from "../components/Checkout";
-
+import AOS from "aos";
+import 'aos/dist/aos.css';
 export default function Cartscreen() {
+  
+  AOS.init({
+    duration:1200
+  })
+
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
   var subtotal = cartItems.reduce((x, item) => x + item.price, 0);
   const dispatch = useDispatch();
   return (
     <div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center p-3" data-aos='fade-up'>
         <div className="col-md-6">
-          <h2>My Cart</h2>
-          <h2>Total Item : {cartItems.length}</h2>
+          <h2 data-aos="zoom-in-down" data-aos-duration="2500">My Cart</h2>
+          <h2 data-aos="zoom-in-down">Total Item : {cartItems.length}</h2>
           {cartItems.map((item) => {
             return (
-              <div className="flex-container">
+              <div className="flex-container" data-aos="fade-right">
                 {/* basic information */}
                 <div className="text-left m-1 w-100">
                   <h6>
@@ -58,6 +64,7 @@ export default function Cartscreen() {
                 {/* delete button */}
                 <div className="m-10 w-80 mt-5">
                   <i
+                  data-aos="fade-left"
                     className="fa fa-trash"
                     style={{ color: "red" }}
                     aria-hidden="true"
@@ -71,7 +78,7 @@ export default function Cartscreen() {
           })}
         </div>
         {/* right side calculate sub total */}
-        <div className="col-md-4 text-right">
+        <div className="col-md-4 text-right" data-aos="fade-left">
           <h2 style={{ fontSize: "40px" }}>SubTotal : {subtotal} /-</h2>
           {/* <button className="pay-button">Pay Now</button> */}
           <Checkout subtotal={subtotal} />

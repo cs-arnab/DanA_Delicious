@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+/* main content in a page,solve footer problem */
+.cbody{
+  min-height: 89vh;
+}

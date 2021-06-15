@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../actions/userActions";
-import Loading from '../components/Loading'
-import Success from '../components/Success'
-import Error from '../components/Error'
+import Loading from "../components/Loading";
+import Success from "../components/Success";
+import Error from "../components/Error";
 
 export default function Registerscreen() {
   const [name, setname] = useState("");
@@ -15,8 +15,16 @@ export default function Registerscreen() {
 
   const dispatch = useDispatch();
   function register() {
-    if (password !== cpassword) {
-      alert("passwords not matched");
+    const emailregex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (name.length < 1) {
+      alert("Empty user name");
+    } else if (!emailregex.test(String(email).toLowerCase())) {
+      alert("Enter A Valid Mail");
+    } else if (password !== cpassword) {
+      alert("Passwords Not Matched");
+    } else if (password.length < 4) {
+      alert("Use a minimum password length of 4 characters or greater");
     } else {
       const user = {
         name,
@@ -32,17 +40,13 @@ export default function Registerscreen() {
     <div>
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 m-5 text-left shadow-lg p-3 mb-5 bg-white rounded">
-
-
-
-
           <h2 className="text-center mb-1" style={{ fontSize: "35px" }}>
             Register
           </h2>
-          
-          {loading && (<Loading />)}
-          {success && (<Success success="User Registered Successfully" />)}
-          {error && (<Error error="Email Already Exist" />)}
+
+          {loading && <Loading />}
+          {success && <Success success="User Registered Successfully" />}
+          {error && <Error error="Email Already Exist" />}
           <div>
             <input
               autoFocus
@@ -66,7 +70,7 @@ export default function Registerscreen() {
               }}
             />
             <input
-              type="text"
+              type="password"
               required
               placeholder="Password"
               className="form-control"

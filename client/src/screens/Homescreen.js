@@ -6,7 +6,7 @@ import { getAllPizzas } from "../actions/pizzaActions";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 // import { getAllPizzasReducer } from "../reducers/pizzaReducers";
-import Filter from '../components/Filter'
+import Filter from "../components/Filter";
 export default function Homescreen() {
   const dispatch = useDispatch();
   const pizzasstate = useSelector((state) => state.getAllPizzasReducer);
@@ -18,13 +18,13 @@ export default function Homescreen() {
 
   return (
     <div>
-      <Filter/>
+      <Filter />
       <div className="row justify-content-center">
         {/* <Filter/> */}
         {loading ? (
-         <Loading/>
+          <Loading />
         ) : error ? (
-          <Error error='something went wrong . . .'/>
+          <Error error="something went wrong . . ." />
         ) : (
           pizzas.map((pizza) => {
             return (
@@ -40,5 +40,3 @@ export default function Homescreen() {
     </div>
   );
 }
-
-// export default Homescreen;

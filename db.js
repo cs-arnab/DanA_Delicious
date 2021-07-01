@@ -1,8 +1,7 @@
 const mongoose=require("mongoose")
+const mongoLink=require('./mongoLink.js')
 
-// var mongoURL = mongoDb url(not given for security reasons)
-var mongoURL ='mongodb+srv://arnab:2@u8qSpTcxLmyMe@cluster0.qbiwo.mongodb.net/mern-pizza'
-
+var mongoURL = mongoLink.link
 
 mongoose.connect(mongoURL , {useUnifiedTopology:true , useNewUrlParser:true})
 

@@ -79,7 +79,7 @@ export default function Pizza({ pizza }) {
           </button>
         </div>
       </div>
-      <Modal show={show} onHide={handleClose}>
+      <Modal className="row justify-content-center" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{pizza.name}</Modal.Title>
         </Modal.Header>
